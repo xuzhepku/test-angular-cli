@@ -1,9 +1,10 @@
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-
+import { Injectable } from '@angular/core';
 /**
  * PostService
  */
+@Injectable()
 export class PostService {
     private _url = "http://jsonplaceholder.typicode.com/posts";
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { PostService } from './modules/post/service';
 import { HTTP_PROVIDERS } from '@angular/http';
 
@@ -9,12 +9,21 @@ import { HTTP_PROVIDERS } from '@angular/http';
   styleUrls: ['app.component.css'],
   providers: [PostService, HTTP_PROVIDERS]
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'app works!';
 
-  constructor(private _postService: PostService){
+  constructor(private _postService: PostService) {
     console.log('###inside app component');
+
+  }
+
+  ngOnInit() {
+    console.log('###inside OnInit of app component');
     this._postService.getPosts()
       .subscribe(posts => console.log(posts));
+  }
+
+  ngOnDestroy() {
+    console.log('###inside ngOnDestroy of app component');
   }
 }

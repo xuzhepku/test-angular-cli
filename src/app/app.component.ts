@@ -23,6 +23,7 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
+  // first constructor, then init.
   ngOnInit() {
     console.log('###inside OnInit of app component');
     this._postService.getPosts()

@@ -12,13 +12,13 @@ export class PostService {
 
     }
 
-    getPost() {
+    getPosts() {
         return this._http.get(this._url)
-            .map(res => res.json);
+            .map(res => res.json());
     }
 
     createPost(post) {
         return this._http.post(this._url, JSON.stringify(post))
-            .map(res => res.json);
+            .map(res => res.json());
     }
 }

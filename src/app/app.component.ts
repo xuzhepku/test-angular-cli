@@ -28,7 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit() {
     console.log('###inside OnInit of app component');
     this._postService.getPosts()
-      .subscribe(posts => {
+      .then(posts => {
         this.isLoading = false;
         console.log(posts[0].id)}
         );

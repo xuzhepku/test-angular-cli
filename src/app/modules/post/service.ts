@@ -1,5 +1,6 @@
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 import { Injectable } from '@angular/core';
 import { Post } from './model';
 /**
@@ -13,9 +14,10 @@ export class PostService {
 
     }
 
-    getPosts() {
+    getPosts(): Promise<Post[]> {
         return this._http.get(this._url)
-            .map(res => res.json());
+            .map(res => res.json())
+            .toPromise();
     }
 
     createPost(post: Post) {

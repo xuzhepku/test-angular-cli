@@ -11,6 +11,7 @@ import { HTTP_PROVIDERS } from '@angular/http';
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'app works!';
+  isLoading = true;
 
   constructor(private _postService: PostService) {
     console.log('###inside app component');
@@ -27,7 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit() {
     console.log('###inside OnInit of app component');
     this._postService.getPosts()
-      .subscribe(posts => console.log(posts));
+      .subscribe(posts => console.log(posts[0].id));
   }
 
   ngOnDestroy() {

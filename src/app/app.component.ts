@@ -14,7 +14,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(private _postService: PostService) {
     console.log('###inside app component');
-
+    // compile time type checking
+    // this._postService.createPost(1);
+    this._postService.createPost({
+      userId: 1,
+      title: 'a',
+      body: 'b',
+    });
   }
 
   ngOnInit() {

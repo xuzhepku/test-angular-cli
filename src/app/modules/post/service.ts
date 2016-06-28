@@ -1,6 +1,7 @@
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
+import { Post } from './model';
 /**
  * PostService
  */
@@ -17,7 +18,7 @@ export class PostService {
             .map(res => res.json());
     }
 
-    createPost(post) {
+    createPost(post: Post) {
         return this._http.post(this._url, JSON.stringify(post))
             .map(res => res.json());
     }

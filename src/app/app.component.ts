@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/forkJoin';
+import 'rxjs/add/observable/forkJoin';//注意是静态方法，而不是class或者interface
 
 import { PostService } from './modules/post/service';
 
@@ -24,11 +24,11 @@ export class AppComponent implements OnInit, OnDestroy {
     console.log('###inside app component');
     // compile time type checking
     // this._postService.createPost(1);
-    // this._postService.createPost({
-    //   userId: 1,
-    //   title: 'a',
-    //   body: 'b',
-    // });
+    this._postService.createPost({
+      userId: 1,
+      title: 'a',
+      body: 'b',
+    });
   }
 
   // first constructor, then init.

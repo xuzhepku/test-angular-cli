@@ -38,7 +38,7 @@ export class AppComponent implements OnInit, OnDestroy {
       .then(
         posts => {
         this.isLoading = false;
-        console.log("==========getPosts"+posts[0].id);
+        console.log("==========getPosts:"+posts[0].id);
       });
 
     // this._postService.getUser(this.userName)

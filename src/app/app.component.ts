@@ -34,12 +34,12 @@ export class AppComponent implements OnInit, OnDestroy {
   // first constructor, then init.
   ngOnInit() {
     console.log('###inside OnInit of app component');
-    // this._postService.getPosts()
-    //   .then(posts => {
-    //     this.isLoading = false;
-    //     console.log(posts[0].id)
-    //   }
-    //   );
+    this._postService.getPosts()
+      .then(
+        posts => {
+        this.isLoading = false;
+        console.log("==========getPosts"+posts[0].id);
+      });
 
     // this._postService.getUser(this.userName)
     //   .subscribe(

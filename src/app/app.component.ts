@@ -4,7 +4,6 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 
 import { PostService } from './modules/post/service';
-import { User } from './modules/post/model';
 
 @Component({
   moduleId: module.id,
@@ -19,6 +18,7 @@ export class AppComponent implements OnInit, OnDestroy {
   followers = [];
   // theUser = {};//也许是因为这个原因导致找不到theUser.login变量？没有定义为对象{}
   user = {}; //证明了 this.user中有user这个变量名是没有问题的。
+  userName = 'octocat';
 
   constructor(private _postService: PostService) {
     console.log('###inside app component');
@@ -41,7 +41,7 @@ export class AppComponent implements OnInit, OnDestroy {
     //   }
     //   );
 
-    this._postService.getUser()
+    this._postService.getUser(this.userName)
       .subscribe(
         user => {
           this.user = user;
@@ -50,7 +50,7 @@ export class AppComponent implements OnInit, OnDestroy {
         () => { this.isLoading = false; }
       );
 
-    this._postService.getFollowers()
+    this._postService.getFollowers(this.userName)
       .subscribe(
           followers => {
             this.followers = followers;

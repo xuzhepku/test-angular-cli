@@ -9,8 +9,9 @@ import { Post } from './model';
 @Injectable()
 export class PostService {
     private _url = "http://jsonplaceholder.typicode.com/posts";
-    private _githubUserApi = "https://api.github.com/users/octocat";
-    private _githubFollowersApi = "https://api.github.com/users/octocat/followers";
+    // private _githubUserApi = "https://api.github.com/users/octocat";
+    // private _githubFollowersApi = "https://api.github.com/users/octocat/followers";
+    private _baseGithubApiUrl = "https://api.github.com/users/";
 
     constructor(private _http: Http) {
 
@@ -27,13 +28,13 @@ export class PostService {
             .map(res => res.json());
     }
 
-    getUser() {
-        return this._http.get(this._githubUserApi)
+    getUser(userName) {
+        return this._http.get(this._baseGithubApiUrl + userName)
             .map(res => res.json());
     }
 
-    getFollowers() {
-        return this._http.get(this._githubFollowersApi)
+    getFollowers(userName) {
+        return this._http.get(this._baseGithubApiUrl + userName + "/followers")
             .map(res => res.json());
     }
 }

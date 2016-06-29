@@ -6,3 +6,31 @@
 
   <i class="fa fa-spinner fa-spin fa-3x"></i>
 </div>
+
+<h3>User</h3>
+<!--{{theUser.login}}-->
+<!--{{user.login}}-->
+<div class="media">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object avatar" src="{{user.avatar_url}}" alt="...">
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">{{user.login}}</h4>
+  </div>
+</div>
+
+<h3>Followers</h3>
+<ul class="media-list">
+  <li *ngFor="let follower of followers" class="media">
+    <div class="media-left">
+      <a href="#">
+        <img class="media-object avatar" src="{{follower.avatar_url}}" alt="...">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">{{follower.login}}</h4>
+    </div>
+  </li>
+</ul>

@@ -41,35 +41,35 @@ export class AppComponent implements OnInit, OnDestroy {
     //   }
     //   );
 
-    this._postService.getUser(this.userName)
-      .subscribe(
-        user => {
-          this.user = user;
-        },
-        null,
-        () => { this.isLoading = false; }
-      );
+    // this._postService.getUser(this.userName)
+    //   .subscribe(
+    //     user => {
+    //       this.user = user;
+    //     },
+    //     null,
+    //     () => { this.isLoading = false; }
+    //   );
 
-    this._postService.getFollowers(this.userName)
-      .subscribe(
-          followers => {
-            this.followers = followers;
-          }, 
-        null, 
-        () => { this.isLoading = false; });
+    // this._postService.getFollowers(this.userName)
+    //   .subscribe(
+    //       followers => {
+    //         this.followers = followers;
+    //       }, 
+    //     null, 
+    //     () => { this.isLoading = false; });
 
     // forkJoin, to execute ajax call in sequence.
-    // Observable.forkJoin(
-    //   this._postService.getUser(),
-    //   this._postService.getFollowers()
-    // ).subscribe(
-    //   res => {
-    //     this.user = res[0];
-    //     this.followers = res[1];
-    //   },
-    //   null,
-    //   () => {this.isLoading = false;}
-    // )
+    Observable.forkJoin(
+      this._postService.getUser(this.userName),
+      this._postService.getFollowers(this.userName)
+    ).subscribe(
+      res => {
+        this.user = res[0];
+        this.followers = res[1];
+      },
+      null,
+      () => {this.isLoading = false;}
+    )
 
     
   }

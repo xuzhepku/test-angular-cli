@@ -58,7 +58,8 @@ export class AppComponent implements OnInit, OnDestroy {
     //     null, 
     //     () => { this.isLoading = false; });
 
-    // forkJoin, to execute ajax call in sequence.
+    // forkJoin, to execute ajax call in sequence.好处是可以统一设置isLoading＝false
+    // 另外需要注意的是，错误方法可以统一设置，而不需要单独设置，所以此处用null（暂时）
     Observable.forkJoin(
       this._postService.getUser(this.userName),
       this._postService.getFollowers(this.userName)
